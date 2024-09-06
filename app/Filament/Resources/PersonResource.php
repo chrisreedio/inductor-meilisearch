@@ -7,7 +7,10 @@ use App\Filament\Resources\PersonResource\RelationManagers;
 use App\Models\Person;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Infolists;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\MaxWidth;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -18,6 +21,23 @@ class PersonResource extends Resource
     protected static ?string $model = Person::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user';
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->columns(1)
+            ->schema([
+                Infolists\Components\TextEntry::make('name')
+                    ->label('Name'),
+                Infolists\Components\TextEntry::make('email')
+                    ->label('Email'),
+                Infolists\Components\TextEntry::make('phone')
+                    ->label('Phone'),
+                Infolists\Components\TextEntry::make('birthday')
+                    ->date()
+                    ->label('Birthday'),
+            ]);
+    }
 
     public static function form(Form $form): Form
     {
@@ -62,7 +82,8 @@ class PersonResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+                Tables\Actions\ViewAction::make()
+                    ->modalWidth(MaxWidth::Small),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -84,8 +105,8 @@ class PersonResource extends Resource
         return [
             'index' => Pages\ListPeople::route('/'),
             'create' => Pages\CreatePerson::route('/create'),
-            'view' => Pages\ViewPerson::route('/{record}'),
-            'edit' => Pages\EditPerson::route('/{record}/edit'),
+            // 'view' => Pages\ViewPerson::route('/{record}'),
+            // 'edit' => Pages\EditPerson::route('/{record}/edit'),
         ];
     }
 }

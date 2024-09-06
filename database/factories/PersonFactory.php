@@ -15,8 +15,8 @@ class PersonFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'phone' => $this->faker->phoneNumber(),
-            'birthday' => Carbon::now(),
+            'phone' => $this->faker->e164PhoneNumber(),
+            'birthday' => $this->faker->dateTimeBetween('-100 years', '-18 years')->format('Y-m-d'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
