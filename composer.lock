@@ -357,12 +357,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chrisreedio/inductor.git",
-                "reference": "c1ae424f45774a3a4659b21acbf0c8644d03d80c"
+                "reference": "600ea0c6b54b72565bd6ea143fa8939db040aa45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chrisreedio/inductor/zipball/c1ae424f45774a3a4659b21acbf0c8644d03d80c",
-                "reference": "c1ae424f45774a3a4659b21acbf0c8644d03d80c",
+                "url": "https://api.github.com/repos/chrisreedio/inductor/zipball/600ea0c6b54b72565bd6ea143fa8939db040aa45",
+                "reference": "600ea0c6b54b72565bd6ea143fa8939db040aa45",
                 "shasum": ""
             },
             "require": {
@@ -450,7 +450,7 @@
                     "url": "https://github.com/chrisreedio"
                 }
             ],
-            "time": "2024-09-06T18:53:26+00:00"
+            "time": "2024-09-06T19:58:30+00:00"
         },
         {
             "name": "danharrin/date-format-converter",

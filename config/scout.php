@@ -133,6 +133,7 @@ return [
     'meilisearch' => [
         'host' => env('MEILISEARCH_HOST', 'http://localhost:7700'),
         'key' => env('MEILISEARCH_KEY'),
+        'search_key' => env('MEILISEARCH_SEARCH_KEY'),
         'index-settings' => [
             env('SCOUT_PREFIX', '').'people' => [
                 'searchableAttributes' => [

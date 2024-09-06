@@ -8,27 +8,36 @@ import {
     AisConfigure,
     AisClearRefinements,
     //@ts-ignore
-} from "vue-instantsearch/vue3/es";
-import { instantMeiliSearch } from "@meilisearch/instant-meilisearch";
-import { ref } from "vue";
-import { useMeiliSearch } from "../Composables/useMeilisearch";
+} from 'vue-instantsearch/vue3/es'
+import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
+import { ref } from 'vue'
+import { useMeiliSearch } from '../composables/useMeilisearch'
 
-const searchClient = ref(null);
-const key = ref(null);
-const indexName = ref(null);
+const props = defineProps({
+    page: Object
+})
 
-const { customSearchFn: searchFn } = useMeiliSearch();
+console.log('Search Key: ', props.page.search_key)
 
-searchClient.value = instantMeilisearch(baseUrl, key.value, {
+const searchClient = ref(null)
+const baseUrl = 'http://localhost:7700'
+const key = ref('SEARCH_KEY')
+const indexName = ref('inductor_meilisearch-people')
+
+const {customSearchFn: searchFn} = useMeiliSearch()
+
+searchClient.value = instantMeiliSearch(baseUrl, key.value, {
     keepZeroFacets: true,
-}).searchClient;
+}).searchClient
 </script>
 <template>
     <ais-instant-search
         v-if="searchClient"
         :searchClient="searchClient"
         :index-name="indexName"
-        :search-function="searchFn"
+        :future="{
+            preserveSharedStateOnUnmount: true
+        }"
     >
         <ais-configure />
 

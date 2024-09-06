@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use ChrisReedIO\Inductor\Facades\Inductor;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
