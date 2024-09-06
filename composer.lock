@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b649eec415591bbdd55a090ba570be11",
+    "content-hash": "33fda14d9e422039aa0e9e076f510df7",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -350,6 +350,107 @@
                 }
             ],
             "time": "2024-02-09T16:56:22+00:00"
+        },
+        {
+            "name": "chrisreedio/inductor",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/chrisreedio/inductor.git",
+                "reference": "fc47565e0fc3ba630fc6b141c99a76caa922f6a2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/chrisreedio/inductor/zipball/fc47565e0fc3ba630fc6b141c99a76caa922f6a2",
+                "reference": "fc47565e0fc3ba630fc6b141c99a76caa922f6a2",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.0",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.9",
+                "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^8.0",
+                "pestphp/pest": "^2.1",
+                "pestphp/pest-plugin-arch": "^2.0",
+                "pestphp/pest-plugin-laravel": "^2.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "spatie/laravel-ray": "^1.26"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ChrisReedIO\\Inductor\\InductorServiceProvider"
+                    ],
+                    "aliases": {
+                        "Inductor": "ChrisReedIO\\Inductor\\Facades\\Inductor"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ChrisReedIO\\Inductor\\": "src/",
+                    "ChrisReedIO\\Inductor\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "ChrisReedIO\\Inductor\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "@php ./vendor/bin/testbench package:discover --ansi"
+                ],
+                "analyse": [
+                    "vendor/bin/phpstan analyse"
+                ],
+                "test": [
+                    "vendor/bin/pest"
+                ],
+                "test-coverage": [
+                    "vendor/bin/pest --coverage"
+                ],
+                "format": [
+                    "vendor/bin/pint"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Reed",
+                    "email": "chris@reedtech.us",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Integrates Vue into FilamentPHP",
+            "homepage": "https://github.com/chrisreedio/inductor",
+            "keywords": [
+                "chrisreedio",
+                "inductor",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/chrisreedio/inductor/issues",
+                "source": "https://github.com/chrisreedio/inductor"
+            },
+            "funding": [
+                {
+                    "type": "github",
+                    "url": "https://github.com/chrisreedio"
+                }
+            ],
+            "time": "2024-09-06T10:39:24+00:00"
         },
         {
             "name": "danharrin/date-format-converter",
@@ -9945,7 +10046,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
