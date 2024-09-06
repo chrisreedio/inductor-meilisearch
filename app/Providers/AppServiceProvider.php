@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
-use ChrisReedIO\Inductor\Facades\Inductor;
+use ChrisReedIO\Inductor\Inductor;
 use Illuminate\Support\ServiceProvider;
+use function auth;
+use function config;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         //
+
     }
 
     /**

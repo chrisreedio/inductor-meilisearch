@@ -13,11 +13,11 @@ import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
 import { ref } from 'vue'
 import { useMeiliSearch } from '../composables/useMeilisearch'
 
-const props = defineProps({
-    page: Object
-})
+// const props = defineProps({
+//     page: Object
+// })
 
-console.log('Search Key: ', props.page.search_key)
+// console.log('Search Key: ', props.page.search_key)
 
 const searchClient = ref(null)
 const baseUrl = 'http://localhost:7700'
