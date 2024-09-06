@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use function auth;
 use function config;
+use function phpversion;
 
 class InductorMiddleware
 {
@@ -18,7 +19,8 @@ class InductorMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        Inductor::share('search_key', config('scout.meilisearch.search_key'));
+        // Inductor::share('search_key', config('scout.meilisearch.search_key'));
+        Inductor::share('php_version', phpversion());
         Inductor::share('user', auth()->user()?->toArray());
         return $next($request);
     }
