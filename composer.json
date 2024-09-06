@@ -70,8 +70,8 @@
     "prefer-stable": true,
     "repositories": [
         {
-            "type": "path",
-            "url": "../inductor"
+            "type": "vcs",
+            "url": "https://github.com/chrisreedio/inductor"
         }
     ]
 }
