@@ -3,7 +3,12 @@
     {{--<div wire:ignore class="border-2 border-blue-500 p-4">--}}
     <div class="border-2 border-blue-500 p-4">
         {{--<x-inductor-vue-wrapper component="PHPVersion" :props="['searchKey' => config('scout.meilisearch.search_key')]" />--}}
-        <livewire:vue component="PHPVersion" :props="['search_key' => config('scout.meilisearch.search_key')]" />
+        {{--<livewire:vue component="PHPVersion" :props="['search_key' => config('scout.meilisearch.search_key')]" />--}}
+        <livewire:vue component="InstantSearch" :props="[
+            'searchKey' => config('scout.meilisearch.search_key'),
+            'searchIndex' => config('scout.prefix').'people',
+            'searchHost' => config('scout.meilisearch.host'),
+        ]" />
 
         {{--<livewire:vue component="PHPVersion" :prop:search-key="config('scout.meilisearch.search_key')" />--}}
         {{--<inductor::vue component="PHPVersion" :search-key="config('scout.meilisearch.search_key')" />--}}

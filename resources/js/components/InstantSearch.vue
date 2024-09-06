@@ -13,20 +13,17 @@ import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
 import { ref } from 'vue'
 import { useMeiliSearch } from '../composables/useMeilisearch'
 
-// const props = defineProps({
-//     page: Object
-// })
-
-// console.log('Search Key: ', props.page.search_key)
+const props = defineProps({
+    searchHost: String,
+    searchKey: String,
+    searchIndex: String,
+})
 
 const searchClient = ref(null)
-const baseUrl = 'http://localhost:7700'
-const key = ref('SEARCH_KEY')
-const indexName = ref('inductor_meilisearch-people')
 
 const {customSearchFn: searchFn} = useMeiliSearch()
 
-searchClient.value = instantMeiliSearch(baseUrl, key.value, {
+searchClient.value = instantMeiliSearch(props.searchHost, props.searchKey, {
     keepZeroFacets: true,
 }).searchClient
 </script>
@@ -34,7 +31,7 @@ searchClient.value = instantMeiliSearch(baseUrl, key.value, {
     <ais-instant-search
         v-if="searchClient"
         :searchClient="searchClient"
-        :index-name="indexName"
+        :index-name="props.searchIndex"
         :future="{
             preserveSharedStateOnUnmount: true
         }"
