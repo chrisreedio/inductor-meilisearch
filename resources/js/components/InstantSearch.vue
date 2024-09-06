@@ -10,13 +10,20 @@ import {
     //@ts-ignore
 } from 'vue-instantsearch/vue3/es'
 import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useMeiliSearch } from '../composables/useMeilisearch'
+// import { useFilament } from '@inductor/composables/useFilament'
+import { useFilament } from '@inductor/composables/useFilament'
 
 const props = defineProps({
     searchHost: String,
     searchKey: String,
     searchIndex: String,
+})
+
+const filament = useFilament()
+onMounted(() => {
+    // filament.openModal()
 })
 
 const searchClient = ref(null)

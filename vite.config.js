@@ -2,8 +2,14 @@ import { defineConfig } from 'vite'
 import laravel from 'laravel-vite-plugin'
 import vue from '@vitejs/plugin-vue'
 import { globSync } from 'glob'
+import path from 'path'
 
 export default defineConfig({
+    resolve: {
+        alias: {
+            '@inductor': path.resolve(__dirname, '/vendor/chrisreedio/inductor/resources/js'),
+        },
+    },
     plugins: [
         // laravel({
         //     input: [
