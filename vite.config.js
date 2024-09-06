@@ -14,7 +14,7 @@ export default defineConfig({
         // }),
         laravel({
             input: [
-                ...globSync('resources/{css,js,components,views}/**/*.{css,js,vue}'),
+                ...globSync('resources/{css,js,views}/**/*.{css,js,vue}'),
                 ...globSync('vendor/chrisreedio/inductor/resources/js/**/*.{js,vue,ts}'),
             ],
             refresh: true,
