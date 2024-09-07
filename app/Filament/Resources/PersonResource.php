@@ -106,7 +106,7 @@ class PersonResource extends Resource
             'index' => Pages\ListPeople::route('/'),
             'create' => Pages\CreatePerson::route('/create'),
             // 'view' => Pages\ViewPerson::route('/{record}'),
-            // 'edit' => Pages\EditPerson::route('/{record}/edit'),
+            'edit' => Pages\EditPerson::route('/{record}/edit'),
         ];
     }
 }

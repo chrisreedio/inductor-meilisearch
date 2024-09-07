@@ -8,52 +8,53 @@ import {
     AisConfigure,
     AisClearRefinements,
     //@ts-ignore
-} from "vue-instantsearch/vue3/es";
-import DataTable from "primevue/datatable";
-import Column from "primevue/column";
-import IconField from "primevue/iconfield";
-import InputIcon from "primevue/inputicon";
-import InputText from "primevue/inputtext";
-import Button from "primevue/button";
-import Toolbar from "primevue/toolbar";
-import SplitButton from "primevue/splitbutton";
-import Tag from "primevue/tag";
+} from 'vue-instantsearch/vue3/es'
+import DataTable from 'primevue/datatable'
+import Column from 'primevue/column'
+import IconField from 'primevue/iconfield'
+import InputIcon from 'primevue/inputicon'
+import InputText from 'primevue/inputtext'
+import Button from 'primevue/button'
+import Toolbar from 'primevue/toolbar'
+import SplitButton from 'primevue/splitbutton'
+import Tag from 'primevue/tag'
 //import ColumnGroup from "primevue/columngroup"; // optional
 //import Row from "primevue/row"; // optional
-import { instantMeiliSearch } from "@meilisearch/instant-meilisearch";
-import { onMounted, ref } from "vue";
-import { useMeiliSearch } from "../composables/useMeilisearch";
+import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
+import { onMounted, ref } from 'vue'
+import { useMeiliSearch } from '../composables/useMeilisearch'
 // import { useFilament } from '@inductor/composables/useFilament'
-import { useFilament } from "@inductor/composables/useFilament";
-import { useCounterStore } from "@/stores/counterStore";
-import { storeToRefs } from "pinia";
+import { useFilament } from '@inductor/composables/useFilament'
+import { useCounterStore } from '@/stores/counterStore'
+import { storeToRefs } from 'pinia'
 
 const props = defineProps({
     searchHost: String,
     searchKey: String,
     searchIndex: String,
-});
+})
 
-const counterStore = useCounterStore();
-const { count } = storeToRefs(counterStore);
-const filament = useFilament();
+const counterStore = useCounterStore()
+const {count} = storeToRefs(counterStore)
+const filament = useFilament()
 onMounted(() => {
     // filament.openModal()
-});
+})
 
-const searchClient = ref(null);
+const searchClient = ref(null)
 
-const { customSearchFn: searchFn } = useMeiliSearch();
+const {customSearchFn: searchFn} = useMeiliSearch()
 
 searchClient.value = instantMeiliSearch(props.searchHost, props.searchKey, {
     keepZeroFacets: true,
-}).searchClient;
+}).searchClient
 
 function rowClick(id) {
-    const notification = new window.FilamentNotification()
-        .title(`Edit ${id}`)
-        .success()
-        .send();
+    filament.openModal(id)
+    // const notification = new window.FilamentNotification()
+    //     .title(`Edit ${id}`)
+    //     .success()
+    //     .send()
 }
 </script>
 <template>

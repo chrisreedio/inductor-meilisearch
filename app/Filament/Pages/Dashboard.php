@@ -21,16 +21,33 @@ class Dashboard extends Page
     protected function getHeaderActions(): array
     {
         return [
-          Action::make('test')
-            ->label('Test')
-            ->icon('heroicon-o-document-text')
-            ->action(function () {
-                Notification::make()
-                    ->title('Test')
-                    ->body('This is a test notification.')
-                    ->success()
-                    ->send();
-            }),
+            Action::make('view')
+                ->label('View')
+                ->icon('heroicon-o-pencil')
+                ->action(function () {
+                    // $this->openActionModal();
+                    $this->dispatch('open-modal', id: "{$this->getId()}-test");
+                    $this->js(<<<JS
+                    //     console.log(`View action clicked: {$this->getId()}`);
+                    //     $wire.$dispatch('openModal', [{{ request()->id }}])
+                    JS
+                    );
+                    // Notification::make()
+                    //     ->title('View')
+                    //     ->body('This is a view notification.')
+                    //     ->info()
+                    //     ->send();
+                }),
+            Action::make('test')
+                ->label('Test')
+                ->icon('heroicon-o-document-text')
+                ->action(function () {
+                    Notification::make()
+                        ->title('Test')
+                        ->body('This is a test notification.')
+                        ->success()
+                        ->send();
+                }),
         ];
     }
 }
