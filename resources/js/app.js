@@ -1,5 +1,6 @@
 import './bootstrap'
 import '/vendor/chrisreedio/inductor/resources/js/inductor'
+import 'primeicons/primeicons.css'
 
 import Aura from '@primevue/themes/aura';
 import PrimeVue from 'primevue/config';

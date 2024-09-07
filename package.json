@@ -24,6 +24,7 @@
         "@meilisearch/instant-meilisearch": "^0.20.0",
         "@primevue/themes": "^4.0.5",
         "pinia": "^2.2.2",
+        "primeicons": "^7.0.0",
         "primevue": "^4.0.5",
         "vue-instantsearch": "^4.19.3"
     }
