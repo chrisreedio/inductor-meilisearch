@@ -2,6 +2,8 @@
 
 namespace App\Filament\Pages;
 
+use Filament\Actions\Action;
+use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Illuminate\Contracts\Support\Htmlable;
 
@@ -13,6 +15,22 @@ class Dashboard extends Page
 
     public function getTitle(): string | Htmlable
     {
-        return '';
+        return 'Dashboard';
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+          Action::make('test')
+            ->label('Test')
+            ->icon('heroicon-o-document-text')
+            ->action(function () {
+                Notification::make()
+                    ->title('Test')
+                    ->body('This is a test notification.')
+                    ->success()
+                    ->send();
+            }),
+        ];
     }
 }

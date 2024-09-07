@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "33fda14d9e422039aa0e9e076f510df7",
+    "content-hash": "e780f2ec5d1fd0d271e38471a9fa3871",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -354,16 +354,10 @@
         {
             "name": "chrisreedio/inductor",
             "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/chrisreedio/inductor.git",
-                "reference": "ec4bd49ef722f888b73d4e020c95b722fa8e0140"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/chrisreedio/inductor/zipball/ec4bd49ef722f888b73d4e020c95b722fa8e0140",
-                "reference": "ec4bd49ef722f888b73d4e020c95b722fa8e0140",
-                "shasum": ""
+                "type": "path",
+                "url": "../inductor",
+                "reference": "41bf676e91b73da5bc2949758dce60e6c50cbbab"
             },
             "require": {
                 "filament/filament": "^3.0",
@@ -383,7 +377,6 @@
                 "phpstan/phpstan-phpunit": "^1.0",
                 "spatie/laravel-ray": "^1.26"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -444,13 +437,9 @@
                 "issues": "https://github.com/chrisreedio/inductor/issues",
                 "source": "https://github.com/chrisreedio/inductor"
             },
-            "funding": [
-                {
-                    "type": "github",
-                    "url": "https://github.com/chrisreedio"
-                }
-            ],
-            "time": "2024-09-07T01:13:37+00:00"
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "danharrin/date-format-converter",
