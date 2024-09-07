@@ -137,8 +137,7 @@ return [
         'index-settings' => [
             env('SCOUT_PREFIX', '').'people' => [
                 'searchableAttributes' => [
-                    'first_name',
-                    'last_name',
+                    'name',
                     'email',
                     'phone',
                     'birthday',
