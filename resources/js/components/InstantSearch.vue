@@ -8,39 +8,44 @@ import {
     AisConfigure,
     AisClearRefinements,
     //@ts-ignore
-} from "vue-instantsearch/vue3/es";
-import DataTable from "primevue/datatable";
-import Column from "primevue/column";
+} from 'vue-instantsearch/vue3/es'
+import DataTable from 'primevue/datatable'
+import Column from 'primevue/column'
+import Button from 'primevue/button'
 //import ColumnGroup from "primevue/columngroup"; // optional
 //import Row from "primevue/row"; // optional
-import { instantMeiliSearch } from "@meilisearch/instant-meilisearch";
-import { onMounted, ref } from "vue";
-import { useMeiliSearch } from "../composables/useMeilisearch";
+import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
+import { onMounted, ref } from 'vue'
+import { useMeiliSearch } from '../composables/useMeilisearch'
 // import { useFilament } from '@inductor/composables/useFilament'
-import { useFilament } from "@inductor/composables/useFilament";
-import { useCounterStore } from "@/stores/counterStore";
-import { storeToRefs } from "pinia";
+import { useFilament } from '@inductor/composables/useFilament'
+import { useCounterStore } from '@/stores/counterStore'
+import { storeToRefs } from 'pinia'
 
 const props = defineProps({
     searchHost: String,
     searchKey: String,
     searchIndex: String,
-});
+})
 
-const counterStore = useCounterStore();
-const { count } = storeToRefs(counterStore);
-const filament = useFilament();
+const counterStore = useCounterStore()
+const {count} = storeToRefs(counterStore)
+const filament = useFilament()
 onMounted(() => {
     // filament.openModal()
-});
+})
 
-const searchClient = ref(null);
+const searchClient = ref(null)
 
-const { customSearchFn: searchFn } = useMeiliSearch();
+const {customSearchFn: searchFn} = useMeiliSearch()
 
 searchClient.value = instantMeiliSearch(props.searchHost, props.searchKey, {
     keepZeroFacets: true,
-}).searchClient;
+}).searchClient
+
+function rowClick(id) {
+    alert(id)
+}
 </script>
 <template>
     <div>
@@ -73,7 +78,7 @@ searchClient.value = instantMeiliSearch(props.searchHost, props.searchKey, {
                         <Column>
                             <template #body="slotProps">
                                 <Button
-                                    @click="alert(slotProps.id)"
+                                    @click="rowClick(slotProps.data.id)"
                                     label="Edit"
                                     icon="pi pi-pencil"
                                     severity="secondary"
