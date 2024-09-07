@@ -8,35 +8,39 @@ import {
     AisConfigure,
     AisClearRefinements,
     //@ts-ignore
-} from 'vue-instantsearch/vue3/es'
-import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
-import { onMounted, ref } from 'vue'
-import { useMeiliSearch } from '../composables/useMeilisearch'
+} from "vue-instantsearch/vue3/es";
+import DataTable from "primevue/datatable";
+import Column from "primevue/column";
+//import ColumnGroup from "primevue/columngroup"; // optional
+//import Row from "primevue/row"; // optional
+import { instantMeiliSearch } from "@meilisearch/instant-meilisearch";
+import { onMounted, ref } from "vue";
+import { useMeiliSearch } from "../composables/useMeilisearch";
 // import { useFilament } from '@inductor/composables/useFilament'
-import { useFilament } from '@inductor/composables/useFilament'
-import { useCounterStore } from '@/stores/counterStore'
-import { storeToRefs } from 'pinia'
+import { useFilament } from "@inductor/composables/useFilament";
+import { useCounterStore } from "@/stores/counterStore";
+import { storeToRefs } from "pinia";
 
 const props = defineProps({
     searchHost: String,
     searchKey: String,
     searchIndex: String,
-})
+});
 
-const counterStore = useCounterStore()
+const counterStore = useCounterStore();
 const { count } = storeToRefs(counterStore);
-const filament = useFilament()
+const filament = useFilament();
 onMounted(() => {
     // filament.openModal()
-})
+});
 
-const searchClient = ref(null)
+const searchClient = ref(null);
 
-const {customSearchFn: searchFn} = useMeiliSearch()
+const { customSearchFn: searchFn } = useMeiliSearch();
 
 searchClient.value = instantMeiliSearch(props.searchHost, props.searchKey, {
     keepZeroFacets: true,
-}).searchClient
+}).searchClient;
 </script>
 <template>
     <div>
@@ -47,7 +51,7 @@ searchClient.value = instantMeiliSearch(props.searchHost, props.searchKey, {
         :searchClient="searchClient"
         :index-name="props.searchIndex"
         :future="{
-            preserveSharedStateOnUnmount: true
+            preserveSharedStateOnUnmount: true,
         }"
     >
         <ais-configure />
@@ -60,7 +64,13 @@ searchClient.value = instantMeiliSearch(props.searchHost, props.searchKey, {
 
             <ais-hits>
                 <template v-slot="{ items }">
-                    <pre>{{ items }}</pre>
+                    <DataTable :value="items" stripedRows>
+                        <Column field="id" header="ID"></Column>
+                        <Column field="name" header="Name"></Column>
+                        <Column field="email" header="Email"></Column>
+                        <Column field="phone" header="Phone"></Column>
+                        <Column field="birthday" header="Birthday"></Column>
+                    </DataTable>
                 </template>
             </ais-hits>
         </div>
