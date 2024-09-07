@@ -4,6 +4,7 @@
     <div class="border-2 border-blue-500 p-4">
         {{--<x-inductor-vue-wrapper component="PHPVersion" :props="['searchKey' => config('scout.meilisearch.search_key')]" />--}}
         {{--<livewire:vue component="PHPVersion" :props="['search_key' => config('scout.meilisearch.search_key')]" />--}}
+        <livewire:vue component="StoreIncrementer" />
         <livewire:vue component="InstantSearch" :props="[
             'searchKey' => config('scout.meilisearch.search_key'),
             'searchIndex' => config('scout.prefix').'people',

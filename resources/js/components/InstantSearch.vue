@@ -14,6 +14,8 @@ import { onMounted, ref } from 'vue'
 import { useMeiliSearch } from '../composables/useMeilisearch'
 // import { useFilament } from '@inductor/composables/useFilament'
 import { useFilament } from '@inductor/composables/useFilament'
+import { useCounterStore } from '@/stores/counterStore'
+import { storeToRefs } from 'pinia'
 
 const props = defineProps({
     searchHost: String,
@@ -21,6 +23,8 @@ const props = defineProps({
     searchIndex: String,
 })
 
+const counterStore = useCounterStore()
+const { count } = storeToRefs(counterStore);
 const filament = useFilament()
 onMounted(() => {
     // filament.openModal()
@@ -35,6 +39,9 @@ searchClient.value = instantMeiliSearch(props.searchHost, props.searchKey, {
 }).searchClient
 </script>
 <template>
+    <div>
+        {{ count }}
+    </div>
     <ais-instant-search
         v-if="searchClient"
         :searchClient="searchClient"
