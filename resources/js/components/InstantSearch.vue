@@ -70,6 +70,17 @@ searchClient.value = instantMeiliSearch(props.searchHost, props.searchKey, {
                         <Column field="email" header="Email"></Column>
                         <Column field="phone" header="Phone"></Column>
                         <Column field="birthday" header="Birthday"></Column>
+                        <Column>
+                            <template #body="slotProps">
+                                <Button
+                                    @click="alert(slotProps.id)"
+                                    label="Edit"
+                                    icon="pi pi-pencil"
+                                    severity="secondary"
+                                    raised
+                                />
+                            </template>
+                        </Column>
                     </DataTable>
                 </template>
             </ais-hits>
